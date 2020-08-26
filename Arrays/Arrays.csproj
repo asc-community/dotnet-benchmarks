@@ -1,8 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+	  
+	<!--
+	That's a bug in preview 8, at least in my version, that requires this analysis level
+	Once it's fixed, this tag can be removed
+	-->
+    <AnalysisLevel>4</AnalysisLevel>
+  
   </PropertyGroup>
 
   <ItemGroup>
