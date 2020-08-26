@@ -33,11 +33,14 @@ namespace Arrays
         [MethodImpl(MethodImplOptions.NoOptimization)]
         public void PureLoop()
         {
+            var locA = a;
+            var locB = b;
+            var locC = c;
             for (int i = 0; i < LENGTH; i++)
             {
                 unchecked
                 {
-                    c[i] = a[i] + b[i];
+                    locC[i] = locA[i] + locB[i];
                 }
             }
         }
@@ -48,8 +51,11 @@ namespace Arrays
         [MethodImpl(MethodImplOptions.NoOptimization)]
         public void CallDelegateInLoop()
         {
+            var locA = a;
+            var locB = b;
+            var locC = c;
             for (int i = 0; i < LENGTH; i++)
-                c[i] = Add(a[i], b[i]);
+                locC[i] = Add(locA[i], locB[i]);
         }
 
         public readonly Action<int[], int[], int[]> FullLoop = (a, b, c) =>
@@ -75,56 +81,30 @@ namespace Arrays
 
 /*
 
-No NoOptimization attribute
-
-100:
-
-|             Method |      Mean |    Error |   StdDev |
-|------------------- |----------:|---------:|---------:|
-|           PureLoop | 108.91 ns | 2.214 ns | 3.878 ns |
-| CallDelegateInLoop | 281.05 ns | 3.851 ns | 3.602 ns |
-|       CallDelegate |  79.36 ns | 0.743 ns | 0.659 ns |
-
-1000:
-|             Method |       Mean |    Error |   StdDev |
-|------------------- |-----------:|---------:|---------:|
-|           PureLoop | 1,041.2 ns | 18.65 ns | 17.44 ns |
-| CallDelegateInLoop | 2,305.7 ns | 46.14 ns | 74.50 ns |
-|       CallDelegate |   538.4 ns | 10.80 ns | 10.10 ns |
-
-10000:
-|             Method |      Mean |     Error |    StdDev |
-|------------------- |----------:|----------:|----------:|
-|           PureLoop | 10.261 us | 0.2030 us | 0.2417 us |
-| CallDelegateInLoop | 27.037 us | 0.5253 us | 0.6451 us |
-|       CallDelegate |  5.183 us | 0.0911 us | 0.1119 us |
-
-
-With NoOptimization attribute
-
-
 100:
 
 |             Method |      Mean |    Error |    StdDev |
 |------------------- |----------:|---------:|----------:|
-|           PureLoop | 365.52 ns | 7.141 ns |  9.533 ns |
-| CallDelegateInLoop | 516.24 ns | 9.957 ns | 12.947 ns |
-|       CallDelegate |  74.91 ns | 0.455 ns |  0.403 ns |
+|           PureLoop | 291.68 ns | 5.852 ns | 12.086 ns |
+| CallDelegateInLoop | 449.32 ns | 8.251 ns | 12.601 ns |
+|       CallDelegate |  75.28 ns | 0.601 ns |  0.533 ns |
 
 
-1000: 
+1000:
 
-|             Method |       Mean |    Error |   StdDev |
-|------------------- |-----------:|---------:|---------:|
-|           PureLoop | 3,521.6 ns | 62.86 ns | 77.20 ns |
-| CallDelegateInLoop | 4,995.9 ns | 58.02 ns | 54.27 ns |
-|       CallDelegate |   672.2 ns | 12.86 ns | 14.81 ns |
+|             Method |       Mean |    Error |    StdDev |     Median |
+|------------------- |-----------:|---------:|----------:|-----------:|
+|           PureLoop | 2,698.3 ns | 38.00 ns |  33.69 ns | 2,684.3 ns |
+| CallDelegateInLoop | 4,386.3 ns | 87.37 ns | 225.54 ns | 4,270.2 ns |
+|       CallDelegate |   521.6 ns |  8.75 ns |   7.31 ns |   521.6 ns |
+
 
 10000:
+
 |             Method |      Mean |     Error |    StdDev |
 |------------------- |----------:|----------:|----------:|
-|           PureLoop | 35.359 us | 0.4101 us | 0.3424 us |
-| CallDelegateInLoop | 50.216 us | 0.3358 us | 0.3141 us |
-|       CallDelegate |  5.115 us | 0.0906 us | 0.0803 us |
- *
+|           PureLoop | 26.853 us | 0.5344 us | 0.6758 us |
+| CallDelegateInLoop | 41.980 us | 0.6852 us | 0.6074 us |
+|       CallDelegate |  5.026 us | 0.0309 us | 0.0289 us |
+
  */
