@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 5.0.100-preview.7.20366.6
     - name: Benching
-      run: dotnet run -p Arrays/Arrays -c Release
+      run: dotnet run -p Arrays -c Release
   MethodAbstractions:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -27,4 +27,4 @@ jobs:
       with:
         dotnet-version: 5.0.100-preview.7.20366.6
     - name: Benching
-      run: dotnet run -p MethodAbstractions/MethodAbstractions -c Release
+      run: dotnet run -p MethodAbstractions -c Release
