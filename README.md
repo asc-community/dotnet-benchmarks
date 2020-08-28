@@ -10,3 +10,4 @@ Feel free to propose your own benchmark with interesting results.
 ### Benchmarks
 
 - [IndexedCollectionAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/IndexedCollectionAbstractions)
+- [MethodAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/MethodAbstractions)
