@@ -1,6 +1,8 @@
 ﻿# Indexed Collection Abstractions
 
-The `IList<T>` type in C# allows you to abstract indexed types like `List<T>` and `T[]` so that you can code against one type, `IList<T>` and support multiple types. However there is a cost to this abstraction. This benchmark is to help you determine if you should rely on `IList<T>` or if you shoudl include explicit versions for `T[]` as well.
+The `IList<T>` type in C# allows you to abstract indexed types like `List<T>` and `T[]` so that you can code against one type, 
+`IList<T>`, and support multiple types. However there is a cost to this abstraction. This benchmark is to help you determine if you 
+should rely on `IList<T>` or if you should include explicit versions for `T[]` as well.
 
 ``` ini
 
