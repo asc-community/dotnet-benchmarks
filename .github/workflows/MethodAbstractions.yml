@@ -1,7 +1,12 @@
 name: Method Abstractions Benchmark
 
 on: 
-  #[push, pull_request]
+  #push:
+  #  paths:
+  #  - 'MethodAbstractions/**'
+  #pull_request:
+  #  paths:
+  #  - 'MethodAbstractions/**'
   workflow_dispatch:
     inputs:
       dotnet-version:

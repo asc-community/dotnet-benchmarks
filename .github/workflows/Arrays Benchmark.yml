@@ -1,7 +1,12 @@
 name: Arrays Benchmark
 
-on: 
-  #[push, pull_request]
+on:
+  #push:
+  #  paths:
+  #  - 'Arrays/**'
+  #pull_request:
+  #  paths:
+  #  - 'Arrays/**'
   workflow_dispatch:
     inputs:
       dotnet-version:

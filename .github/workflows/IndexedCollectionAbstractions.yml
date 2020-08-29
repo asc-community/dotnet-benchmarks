@@ -1,7 +1,12 @@
 name: Indexed Collection Abstractions Benchmark
 
 on: 
-  #[push, pull_request]
+  #push:
+  #  paths:
+  #  - 'IndexedCollectionAbstractions/**'
+  #pull_request:
+  #  paths:
+  #  - 'IndexedCollectionAbstractions/**'
   workflow_dispatch:
     inputs:
       dotnet-version:
