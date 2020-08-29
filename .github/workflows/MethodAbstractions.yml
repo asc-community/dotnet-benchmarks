@@ -1,0 +1,26 @@
+name: Method Abstractions Benchmark
+
+on: 
+  #[push, pull_request]
+  workflow_dispatch:
+    inputs:
+      dotnet-version:
+        description: '.NET Version'
+        required: true
+        default: '5.0.100-preview.7.20366.6'
+      os:
+        description: 'OS'
+        required: true
+        default: 'windows-latest, ubuntu-latest, macos-latest'
+
+jobs:
+  Arrays:
+    runs-on: ${{ github.event.inputs.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ github.event.inputs.dotnet-version }}
+    - name: Running Benchmarking
+      run: dotnet run -p MethodAbstractions -c Release
