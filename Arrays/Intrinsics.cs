@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
 public class VectorVsVector256
@@ -23,32 +24,37 @@ public class VectorVsVector256
             a[i] = i * 5;
         }
     }
-
+    
     [Benchmark(Baseline = true)]
-    public void NoVector()
+    public unsafe void NoVector()
     {
         unchecked
         {
-            for (int i = 0; i < Length; i++)
-                c[i] = a[i] * b[i];
-        }
-    }
-
-    [Benchmark]
-    public void VectorT()
-    {
-        unchecked
-        {
-            for (int i = 0; i < Length; i += 8)
+            fixed (int* ap = a, bp = b, cp = c)
             {
-                var block1 = new Vector<int>(a, i);
-                var block2 = new Vector<int>(b, i);
-                var bl = block1 * block2;
-                bl.CopyTo(c, i);
+                for (int i = 0; i < Length; i++)
+                    cp[i] = ap[i] * bp[i];
             }
         }
     }
-
+    
+    [Benchmark]
+    public unsafe void VectorT()
+    {
+        unchecked
+        {
+            fixed (int* ap = a, bp = b, cp = c)
+            {
+                for (int i = 0; i < Length; i += 8)
+                {
+                    var block1 = *(Vector<int>*)(ap + i);
+                    var block2 = *(Vector<int>*)(bp + i);
+                    *(Vector<int>*)(cp + i) = block1 * block2;
+                }
+            }
+        }
+    }
+    
     [Benchmark]
     public unsafe void Vector256T()
     {
@@ -72,30 +78,30 @@ public class VectorVsVector256
 
 i7-7700HQ
 
-|     Method |   Length |             Mean |          Error |         StdDev | Ratio | RatioSD |
-|----------- |--------- |-----------------:|---------------:|---------------:|------:|--------:|
-|   NoVector |      160 |        199.57 ns |       1.731 ns |       1.619 ns |  1.00 |    0.00 |
-|    VectorT |      160 |         47.97 ns |       0.526 ns |       0.492 ns |  0.24 |    0.00 |
-| Vector256T |      160 |         19.82 ns |       0.401 ns |       0.335 ns |  0.10 |    0.00 |
-|            |          |                  |                |                |       |         |
-|   NoVector |     1600 |      1,883.08 ns |      34.066 ns |      30.199 ns |  1.00 |    0.00 |
-|    VectorT |     1600 |        472.19 ns |       6.664 ns |       6.234 ns |  0.25 |    0.01 |
-| Vector256T |     1600 |        152.49 ns |       2.973 ns |       2.781 ns |  0.08 |    0.00 |
-|            |          |                  |                |                |       |         |
-|   NoVector |    16000 |     19,166.22 ns |     352.569 ns |     294.411 ns |  1.00 |    0.00 |
-|    VectorT |    16000 |      5,695.69 ns |     106.595 ns |     109.465 ns |  0.30 |    0.01 |
-| Vector256T |    16000 |      2,611.60 ns |      51.638 ns |      84.842 ns |  0.14 |    0.01 |
-|            |          |                  |                |                |       |         |
-|   NoVector |   160000 |    203,053.19 ns |   4,048.488 ns |   8,178.145 ns |  1.00 |    0.00 |
-|    VectorT |   160000 |     58,105.00 ns |   1,146.751 ns |   1,569.686 ns |  0.29 |    0.02 |
-| Vector256T |   160000 |     43,851.32 ns |     863.055 ns |   1,237.767 ns |  0.21 |    0.01 |
-|            |          |                  |                |                |       |         |
-|   NoVector |  1600000 |  2,067,324.41 ns |  41,314.648 ns |  82,509.815 ns |  1.00 |    0.00 |
-|    VectorT |  1600000 |  1,299,171.61 ns |  25,956.609 ns |  56,427.532 ns |  0.63 |    0.04 |
-| Vector256T |  1600000 |  1,205,481.25 ns |  22,643.346 ns |  25,168.019 ns |  0.59 |    0.02 |
-|            |          |                  |                |                |       |         |
-|   NoVector | 16000000 | 20,411,832.08 ns | 394,841.798 ns | 369,335.263 ns |  1.00 |    0.00 |
-|    VectorT | 16000000 | 12,051,374.15 ns | 240,450.404 ns | 312,653.444 ns |  0.59 |    0.02 |
-| Vector256T | 16000000 | 11,653,012.50 ns | 167,229.207 ns | 139,643.962 ns |  0.57 |    0.01 |
+|     Method |   Length |             Mean |          Error |         StdDev |           Median | Ratio | RatioSD |
+|----------- |--------- |-----------------:|---------------:|---------------:|-----------------:|------:|--------:|
+|   NoVector |      160 |        117.27 ns |       1.054 ns |       0.880 ns |        116.94 ns |  1.00 |    0.00 |
+|    VectorT |      160 |         19.99 ns |       0.417 ns |       0.480 ns |         19.90 ns |  0.17 |    0.00 |
+| Vector256T |      160 |         19.50 ns |       0.361 ns |       0.338 ns |         19.43 ns |  0.17 |    0.00 |
+|            |          |                  |                |                |                  |       |         |
+|   NoVector |     1600 |      1,070.47 ns |       9.314 ns |       7.272 ns |      1,072.03 ns |  1.00 |    0.00 |
+|    VectorT |     1600 |        168.75 ns |       3.239 ns |       3.030 ns |        169.31 ns |  0.16 |    0.00 |
+| Vector256T |     1600 |        153.90 ns |       3.090 ns |       4.125 ns |        153.01 ns |  0.15 |    0.00 |
+|            |          |                  |                |                |                  |       |         |
+|   NoVector |    16000 |     11,140.08 ns |     217.774 ns |     305.288 ns |     11,104.45 ns |  1.00 |    0.00 |
+|    VectorT |    16000 |      2,601.62 ns |      33.129 ns |      29.368 ns |      2,601.89 ns |  0.23 |    0.01 |
+| Vector256T |    16000 |      2,606.40 ns |      30.515 ns |      27.051 ns |      2,604.79 ns |  0.23 |    0.01 |
+|            |          |                  |                |                |                  |       |         |
+|   NoVector |   160000 |    112,583.93 ns |   2,024.219 ns |   1,794.417 ns |    112,123.37 ns |  1.00 |    0.00 |
+|    VectorT |   160000 |     43,904.00 ns |     634.792 ns |     593.785 ns |     43,888.51 ns |  0.39 |    0.01 |
+| Vector256T |   160000 |     43,470.56 ns |     733.789 ns |     720.679 ns |     43,172.89 ns |  0.39 |    0.01 |
+|            |          |                  |                |                |                  |       |         |
+|   NoVector |  1600000 |  1,395,028.32 ns |  19,602.973 ns |  18,336.633 ns |  1,399,623.44 ns |  1.00 |    0.00 |
+|    VectorT |  1600000 |  1,039,098.82 ns |  30,624.182 ns |  90,296.093 ns |  1,000,621.19 ns |  0.85 |    0.05 |
+| Vector256T |  1600000 |  1,097,105.87 ns |  21,939.680 ns |  48,158.129 ns |  1,091,926.32 ns |  0.78 |    0.06 |
+|            |          |                  |                |                |                  |       |         |
+|   NoVector | 16000000 | 14,293,466.20 ns | 278,722.532 ns | 309,799.356 ns | 14,160,007.81 ns |  1.00 |    0.00 |
+|    VectorT | 16000000 | 11,581,997.24 ns | 132,511.740 ns | 110,653.305 ns | 11,581,384.38 ns |  0.81 |    0.02 |
+| Vector256T | 16000000 | 11,712,245.86 ns | 224,194.448 ns | 230,231.192 ns | 11,628,498.44 ns |  0.82 |    0.03 |
 
 */
