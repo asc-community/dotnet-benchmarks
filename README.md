@@ -13,3 +13,4 @@ Feel free to propose your own benchmark with interesting results.
 - [IndexedCollectionAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/IndexedCollectionAbstractions)
 - [MethodAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/MethodAbstractions)
 - [MultipleReturnsTechniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/MultipleReturnsTechniques)
+- [StringFormattingTechniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/StringFormattingTechniques)
