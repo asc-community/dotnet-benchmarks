@@ -1,7 +1,9 @@
 ﻿# Branching Techniques
 
 This benchmark compares various types of branching that is possible inside of C#: switch statements,
-switch expressions, and if statements.
+switch expressions, if statements, and conditional expressions.
+
+_Note: large conditional expressions cause a `StackOverflowException` in Roslyn and cannot be built._
 
 ``` ini
 
@@ -13,33 +15,40 @@ Intel Core i7-4790K CPU 4.00GHz (Haswell), 1 CPU, 8 logical and 4 physical cores
 
 
 ```
-|              Method |          Mean |      Error |     StdDev |        Median |
-|-------------------- |--------------:|-----------:|-----------:|--------------:|
-|    switchStatement1 |     0.2125 ns |  0.0064 ns |  0.0060 ns |     0.2128 ns |
-|   switchExpression1 |     0.4244 ns |  0.0344 ns |  0.0321 ns |     0.4218 ns |
-|                 if1 |     0.0984 ns |  0.0046 ns |  0.0043 ns |     0.0974 ns |
-|        conditional1 |     0.2130 ns |  0.0048 ns |  0.0045 ns |     0.2131 ns |
-|    switchStatement2 |     1.9207 ns |  0.0045 ns |  0.0040 ns |     1.9217 ns |
-|   switchExpression2 |     1.3847 ns |  0.0173 ns |  0.0153 ns |     1.3820 ns |
-|                 if2 |     1.3032 ns |  0.0132 ns |  0.0124 ns |     1.3076 ns |
-|        conditional2 |     1.9967 ns |  0.0625 ns |  0.0791 ns |     2.0015 ns |
-|    switchStatement3 |     4.1489 ns |  0.0250 ns |  0.0234 ns |     4.1491 ns |
-|   switchExpression3 |     5.2536 ns |  0.5834 ns |  1.7201 ns |     4.1257 ns |
-|                 if3 |     3.7513 ns |  0.0342 ns |  0.0320 ns |     3.7513 ns |
-|        conditional3 |     3.0552 ns |  0.0852 ns |  0.1077 ns |     3.0481 ns |
-|    switchStatement4 |     4.5788 ns |  0.0426 ns |  0.0356 ns |     4.5800 ns |
-|   switchExpression4 |     6.3861 ns |  0.0990 ns |  0.2352 ns |     6.2929 ns |
-|                 if4 |     5.9512 ns |  0.0195 ns |  0.0173 ns |     5.9529 ns |
-|        conditional4 |     4.9664 ns |  0.1242 ns |  0.1700 ns |     4.9258 ns |
-|    switchStatement5 |     8.2305 ns |  0.1917 ns |  0.3739 ns |     8.0942 ns |
-|   switchExpression5 |     8.2019 ns |  0.1888 ns |  0.2455 ns |     8.0907 ns |
-|                 if5 |     9.3838 ns |  0.1951 ns |  0.1825 ns |     9.3067 ns |
-|        conditional5 |     6.5049 ns |  0.1541 ns |  0.2109 ns |     6.4374 ns |
-|   switchStatement10 |    15.3499 ns |  0.1430 ns |  0.1268 ns |    15.3371 ns |
-|  switchExpression10 |    15.0133 ns |  0.1491 ns |  0.1322 ns |    14.9726 ns |
-|                if10 |    36.0373 ns |  0.1396 ns |  0.1306 ns |    36.0263 ns |
-|       conditional10 |    20.9504 ns |  0.0939 ns |  0.0878 ns |    20.9298 ns |
-|  switchStatement100 |   137.3561 ns |  2.7208 ns |  2.5450 ns |   137.4857 ns |
-| switchExpression100 |   136.4285 ns |  2.0243 ns |  1.6904 ns |   136.2560 ns |
-|               if100 | 3,670.4530 ns | 11.5974 ns | 10.2808 ns | 3,669.9791 ns |
-|      conditional100 |   691.0875 ns | 13.4771 ns | 12.6065 ns |   688.7974 ns |
+|               Method |            Mean |         Error |        StdDev |          Median |
+|--------------------- |----------------:|--------------:|--------------:|----------------:|
+|     switchStatement1 |       0.0041 ns |     0.0089 ns |     0.0069 ns |       0.0000 ns |
+|    switchExpression1 |       0.2411 ns |     0.0059 ns |     0.0055 ns |       0.2395 ns |
+|                  if1 |       0.2380 ns |     0.0049 ns |     0.0046 ns |       0.2393 ns |
+|         conditional1 |       0.4968 ns |     0.0150 ns |     0.0117 ns |       0.4936 ns |
+|     switchStatement2 |       1.4859 ns |     0.0135 ns |     0.0127 ns |       1.4869 ns |
+|    switchExpression2 |       1.5071 ns |     0.0549 ns |     0.0714 ns |       1.5117 ns |
+|                  if2 |       1.5020 ns |     0.0148 ns |     0.0131 ns |       1.4999 ns |
+|         conditional2 |       1.2203 ns |     0.0501 ns |     0.0669 ns |       1.2190 ns |
+|     switchStatement3 |       4.1964 ns |     0.0767 ns |     0.0680 ns |       4.1938 ns |
+|    switchExpression3 |       4.0621 ns |     0.1047 ns |     0.0980 ns |       4.0089 ns |
+|                  if3 |       2.9129 ns |     0.0653 ns |     0.0610 ns |       2.9171 ns |
+|         conditional3 |       3.5388 ns |     0.0906 ns |     0.0803 ns |       3.5558 ns |
+|     switchStatement4 |       5.6539 ns |     0.1398 ns |     0.2217 ns |       5.5957 ns |
+|    switchExpression4 |       6.1669 ns |     0.1280 ns |     0.1135 ns |       6.2009 ns |
+|                  if4 |       6.4234 ns |     0.0834 ns |     0.0780 ns |       6.4019 ns |
+|         conditional4 |       5.6963 ns |     0.1180 ns |     0.1046 ns |       5.6696 ns |
+|     switchStatement5 |       7.1302 ns |     0.1681 ns |     0.4631 ns |       6.8903 ns |
+|    switchExpression5 |       6.8067 ns |     0.0729 ns |     0.0647 ns |       6.7913 ns |
+|                  if5 |       9.4046 ns |     0.0975 ns |     0.0814 ns |       9.3969 ns |
+|         conditional5 |       7.6240 ns |     0.0333 ns |     0.0296 ns |       7.6185 ns |
+|    switchStatement10 |      14.8379 ns |     0.1509 ns |     0.1260 ns |      14.7890 ns |
+|   switchExpression10 |      22.6056 ns |     3.2595 ns |     9.6107 ns |      15.1786 ns |
+|                 if10 |      37.5589 ns |     0.7121 ns |     0.9259 ns |      37.1005 ns |
+|        conditional10 |      16.6546 ns |     0.1360 ns |     0.1205 ns |      16.6106 ns |
+|   switchStatement100 |     219.1269 ns |    31.6139 ns |    93.2144 ns |     153.3968 ns |
+|  switchExpression100 |     161.8614 ns |     2.5963 ns |     2.3015 ns |     162.0861 ns |
+|                if100 |   3,991.8982 ns |    70.1564 ns |   100.6162 ns |   3,981.9721 ns |
+|       conditional100 |     712.3504 ns |    13.6491 ns |    14.0166 ns |     713.8268 ns |
+|  switchStatement1000 |   5,983.2963 ns |   103.4955 ns |   123.2041 ns |   5,935.0021 ns |
+| switchExpression1000 |   4,556.3652 ns |    38.0648 ns |    42.3090 ns |   4,540.0730 ns |
+|               if1000 | 566,657.9362 ns | 3,719.6975 ns | 3,479.4074 ns | 566,030.3711 ns |
+|      conditional1000 |              NA |            NA |            NA |              NA |
+
+Benchmarks with issues:
+  BranchingTechniquesBenchmarks.conditional1000: DefaultJob

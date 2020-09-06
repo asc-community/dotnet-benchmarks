@@ -9,17 +9,20 @@
 //	This code was generated from the "MultipleReturnsIntBenchmarks.tt" T4 Text Template.
 // </auto-generated>
 //------------------------------------------------------------------------------
-<# int maxsize = 7; #>
+<# int[] sizes = { 1, 2, 3, 4, 5, 10, 100, 1000 }; #>
 
 using BenchmarkDotNet.Attributes;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace StringFormattingTechniques
 {
 	public class StringBenchmarks
 	{
-<# for (int i = 1; i <= maxsize; i++) { #>
+<# foreach (int i in sizes) { #>
 
 		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
 		public void AddOperator<#= i #>()
 		{
 <# for (int j = 0; j < i; j++) { #>
@@ -29,6 +32,7 @@ namespace StringFormattingTechniques
 		}
 
 		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
 		public void Format<#= i #>()
 		{
 <# for (int j = 0; j < i; j++) { #>
@@ -38,12 +42,45 @@ namespace StringFormattingTechniques
 		}
 
 		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
 		public void Interpolation<#= i #>()
 		{
 <# for (int j = 0; j < i; j++) { #>
 			int _<#= j + 1 #> = <#= j + 1 #>;
 <# } #>
 			_ = $" <#= string.Join(@" ", Enumerable.Range(1, i).Select(j => $@"{{_{j}}}")) #> ";
+		}
+		
+		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
+		public void StringBuilder<#= i #>()
+		{
+<# for (int j = 0; j < i; j++) { #>
+			int _<#= j + 1 #> = <#= j + 1 #>;
+<# } #>
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.Append(_1);
+<# for (int j = 1; j < i; j++) { #>
+			stringBuilder.Append(" ");
+			stringBuilder.Append(_<#= j + 1 #>);
+<# } #>
+			_ = stringBuilder.ToString();
+		}
+
+		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
+		public void AddEqualOperator<#= i #>()
+		{
+<# for (int j = 0; j < i; j++) { #>
+			int _<#= j + 1 #> = <#= j + 1 #>;
+<# } #>
+			string result = string.Empty;
+			result += _1;
+<# for (int j = 1; j < i; j++) { #>
+			result += " ";
+			result += _<#= j + 1 #>;
+<# } #>
+			_ = result.ToString();
 		}
 <# } #>
 	}
