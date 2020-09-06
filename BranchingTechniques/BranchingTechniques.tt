@@ -9,7 +9,7 @@
 //	This code was generated from the "BranchingTechniques.tt" T4 Text Template.
 // </auto-generated>
 //------------------------------------------------------------------------------
-<# int[] sizes = { 1, 2, 3, 4, 5, 10, 100, 1000 }; #>
+<# int[] sizes = { 1, 2, 3, 4, 5, 10, 100, }; #>
 
 using BenchmarkDotNet.Attributes;
 
@@ -56,6 +56,19 @@ namespace BranchingTechniques
 <# for (int j = 0; j < i; j++) { #>
 				<#= i == 0 ? "else " : "" #>if (i == <#= j #>) temp = i;
 <# } #>
+			}
+		}
+
+		[Benchmark]
+		public void conditional<#= i #>()
+		{
+			for (int i = 0; i < <#= i #>; i++)
+			{
+				temp =
+<# for (int j = 0; j < i; j++) { #>
+					i == <#= j #> ? i :
+<# } #>
+					default;
 			}
 		}
 <# } #>
