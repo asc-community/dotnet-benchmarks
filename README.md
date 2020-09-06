@@ -11,6 +11,7 @@ Feel free to propose your own benchmark with interesting results.
 
 - [Arrays](https://github.com/dotneters/dotnet-benchmarks/tree/master/Arrays)
 - [Branching Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/BranchingTechniques)
+- [ExceptionHandlingTechniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/ExceptionHandlingTechniques)
 - [IndexedCollectionAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/IndexedCollectionAbstractions)
 - [MethodAbstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/MethodAbstractions)
 - [MultipleReturnsTechniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/MultipleReturnsTechniques)

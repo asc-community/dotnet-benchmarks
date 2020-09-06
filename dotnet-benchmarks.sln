@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultipleReturnsTechniques",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringFormattingTechniques", "StringFormattingTechniques\StringFormattingTechniques.csproj", "{DA088111-11D8-4507-A760-0A94B32F2658}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchingTechniques", "BranchingTechniques\BranchingTechniques.csproj", "{33D9064C-160D-448C-9827-BAA077CA3644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BranchingTechniques", "BranchingTechniques\BranchingTechniques.csproj", "{33D9064C-160D-448C-9827-BAA077CA3644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingTechniques", "ExceptionHandlingTechniques\ExceptionHandlingTechniques.csproj", "{0183986E-78D4-4C4F-AF2C-69E961A986EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{33D9064C-160D-448C-9827-BAA077CA3644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33D9064C-160D-448C-9827-BAA077CA3644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33D9064C-160D-448C-9827-BAA077CA3644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0183986E-78D4-4C4F-AF2C-69E961A986EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0183986E-78D4-4C4F-AF2C-69E961A986EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0183986E-78D4-4C4F-AF2C-69E961A986EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0183986E-78D4-4C4F-AF2C-69E961A986EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
