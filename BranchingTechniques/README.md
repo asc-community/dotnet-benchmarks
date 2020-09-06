@@ -17,37 +17,37 @@ Intel Core i7-4790K CPU 4.00GHz (Haswell), 1 CPU, 8 logical and 4 physical cores
 ```
 |               Method |            Mean |         Error |        StdDev |          Median |
 |--------------------- |----------------:|--------------:|--------------:|----------------:|
-|     switchStatement1 |       0.0041 ns |     0.0089 ns |     0.0069 ns |       0.0000 ns |
-|    switchExpression1 |       0.2411 ns |     0.0059 ns |     0.0055 ns |       0.2395 ns |
-|                  if1 |       0.2380 ns |     0.0049 ns |     0.0046 ns |       0.2393 ns |
-|         conditional1 |       0.4968 ns |     0.0150 ns |     0.0117 ns |       0.4936 ns |
-|     switchStatement2 |       1.4859 ns |     0.0135 ns |     0.0127 ns |       1.4869 ns |
-|    switchExpression2 |       1.5071 ns |     0.0549 ns |     0.0714 ns |       1.5117 ns |
-|                  if2 |       1.5020 ns |     0.0148 ns |     0.0131 ns |       1.4999 ns |
-|         conditional2 |       1.2203 ns |     0.0501 ns |     0.0669 ns |       1.2190 ns |
-|     switchStatement3 |       4.1964 ns |     0.0767 ns |     0.0680 ns |       4.1938 ns |
-|    switchExpression3 |       4.0621 ns |     0.1047 ns |     0.0980 ns |       4.0089 ns |
-|                  if3 |       2.9129 ns |     0.0653 ns |     0.0610 ns |       2.9171 ns |
-|         conditional3 |       3.5388 ns |     0.0906 ns |     0.0803 ns |       3.5558 ns |
-|     switchStatement4 |       5.6539 ns |     0.1398 ns |     0.2217 ns |       5.5957 ns |
-|    switchExpression4 |       6.1669 ns |     0.1280 ns |     0.1135 ns |       6.2009 ns |
-|                  if4 |       6.4234 ns |     0.0834 ns |     0.0780 ns |       6.4019 ns |
-|         conditional4 |       5.6963 ns |     0.1180 ns |     0.1046 ns |       5.6696 ns |
-|     switchStatement5 |       7.1302 ns |     0.1681 ns |     0.4631 ns |       6.8903 ns |
-|    switchExpression5 |       6.8067 ns |     0.0729 ns |     0.0647 ns |       6.7913 ns |
-|                  if5 |       9.4046 ns |     0.0975 ns |     0.0814 ns |       9.3969 ns |
-|         conditional5 |       7.6240 ns |     0.0333 ns |     0.0296 ns |       7.6185 ns |
-|    switchStatement10 |      14.8379 ns |     0.1509 ns |     0.1260 ns |      14.7890 ns |
-|   switchExpression10 |      22.6056 ns |     3.2595 ns |     9.6107 ns |      15.1786 ns |
-|                 if10 |      37.5589 ns |     0.7121 ns |     0.9259 ns |      37.1005 ns |
-|        conditional10 |      16.6546 ns |     0.1360 ns |     0.1205 ns |      16.6106 ns |
-|   switchStatement100 |     219.1269 ns |    31.6139 ns |    93.2144 ns |     153.3968 ns |
-|  switchExpression100 |     161.8614 ns |     2.5963 ns |     2.3015 ns |     162.0861 ns |
-|                if100 |   3,991.8982 ns |    70.1564 ns |   100.6162 ns |   3,981.9721 ns |
-|       conditional100 |     712.3504 ns |    13.6491 ns |    14.0166 ns |     713.8268 ns |
-|  switchStatement1000 |   5,983.2963 ns |   103.4955 ns |   123.2041 ns |   5,935.0021 ns |
-| switchExpression1000 |   4,556.3652 ns |    38.0648 ns |    42.3090 ns |   4,540.0730 ns |
-|               if1000 | 566,657.9362 ns | 3,719.6975 ns | 3,479.4074 ns | 566,030.3711 ns |
+|     switchStatement1 |       0.0014 ns |     0.0029 ns |     0.0027 ns |       0.0000 ns |
+|    switchExpression1 |       0.2407 ns |     0.0097 ns |     0.0090 ns |       0.2412 ns |
+|                  if1 |       0.2357 ns |     0.0076 ns |     0.0071 ns |       0.2352 ns |
+|         conditional1 |       0.5756 ns |     0.0365 ns |     0.0448 ns |       0.5699 ns |
+|     switchStatement2 |       1.4590 ns |     0.0133 ns |     0.0124 ns |       1.4559 ns |
+|    switchExpression2 |       1.5196 ns |     0.0555 ns |     0.0814 ns |       1.5300 ns |
+|                  if2 |       1.3594 ns |     0.0532 ns |     0.0523 ns |       1.3353 ns |
+|         conditional2 |       1.1767 ns |     0.0333 ns |     0.0311 ns |       1.1730 ns |
+|     switchStatement3 |       4.1114 ns |     0.0771 ns |     0.0602 ns |       4.1107 ns |
+|    switchExpression3 |       4.3437 ns |     0.1110 ns |     0.1520 ns |       4.3152 ns |
+|                  if3 |       3.8700 ns |     0.0404 ns |     0.0358 ns |       3.8752 ns |
+|         conditional3 |       3.5161 ns |     0.0676 ns |     0.0632 ns |       3.5530 ns |
+|     switchStatement4 |       5.6173 ns |     0.0763 ns |     0.1470 ns |       5.6022 ns |
+|    switchExpression4 |       6.1340 ns |     0.1434 ns |     0.1271 ns |       6.0750 ns |
+|                  if4 |       6.2361 ns |     0.1501 ns |     0.2338 ns |       6.2479 ns |
+|         conditional4 |       5.5457 ns |     0.0675 ns |     0.0599 ns |       5.5537 ns |
+|     switchStatement5 |       7.0590 ns |     0.1593 ns |     0.1897 ns |       7.0144 ns |
+|    switchExpression5 |       6.9517 ns |     0.1623 ns |     0.2756 ns |       6.8837 ns |
+|                  if5 |       8.8664 ns |     0.0877 ns |     0.0820 ns |       8.8887 ns |
+|         conditional5 |       7.8437 ns |     0.1637 ns |     0.1608 ns |       7.8131 ns |
+|    switchStatement10 |      15.2778 ns |     0.3325 ns |     0.3696 ns |      15.2038 ns |
+|   switchExpression10 |      17.0714 ns |     0.3612 ns |     0.5730 ns |      16.9284 ns |
+|                 if10 |      28.8714 ns |     0.4889 ns |     0.5231 ns |      28.7261 ns |
+|        conditional10 |      16.4725 ns |     0.1321 ns |     0.1235 ns |      16.4475 ns |
+|   switchStatement100 |     143.5896 ns |     1.1010 ns |     0.9760 ns |     143.2851 ns |
+|  switchExpression100 |     157.8319 ns |     2.9648 ns |     2.3147 ns |     157.1144 ns |
+|                if100 |   1,788.5813 ns |    35.2708 ns |    39.2034 ns |   1,787.3701 ns |
+|       conditional100 |     701.0713 ns |     3.3936 ns |     3.1744 ns |     699.9504 ns |
+|  switchStatement1000 |   6,243.7404 ns |   126.9243 ns |   366.2056 ns |   6,067.1780 ns |
+| switchExpression1000 |   4,642.0040 ns |    90.2316 ns |    96.5468 ns |   4,622.6555 ns |
+|               if1000 | 270,967.1061 ns | 2,022.8634 ns | 1,579.3187 ns | 271,108.5205 ns |
 |      conditional1000 |              NA |            NA |            NA |              NA |
 
 Benchmarks with issues:
