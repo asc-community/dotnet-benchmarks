@@ -50,7 +50,7 @@ namespace StringFormattingTechniques
 <# } #>
 			_ = $" <#= string.Join(@" ", Enumerable.Range(1, i).Select(j => $@"{{_{j}}}")) #> ";
 		}
-		
+
 		[Benchmark]
 		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
 		public void StringBuilder<#= i #>()
@@ -65,6 +65,16 @@ namespace StringFormattingTechniques
 			stringBuilder.Append(_<#= j + 1 #>);
 <# } #>
 			_ = stringBuilder.ToString();
+		}
+		
+		[Benchmark]
+		[MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
+		public void StringConcat<#= i #>()
+		{
+<# for (int j = 0; j < i; j++) { #>
+			int _<#= j + 1 #> = <#= j + 1 #>;
+<# } #>
+			_ = string.Concat(" ", <#= string.Join(@", "" "", ", Enumerable.Range(1, i).Select(j => $@"_{j}")) #>, " ");
 		}
 
 		[Benchmark]
