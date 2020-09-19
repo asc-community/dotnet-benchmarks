@@ -7,6 +7,7 @@ namespace StringFormattingTechniques
 		static void Main()
 		{
 			BenchmarkRunner.Run<StringBenchmarks>();
+			BenchmarkRunner.Run<StringIntern>();
 		}
 	}
 }
