@@ -6,7 +6,7 @@ namespace Arrays
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<VectorVsVector256>();
+            BenchmarkRunner.Run<ParallelFor>();
         }
     }
 }
