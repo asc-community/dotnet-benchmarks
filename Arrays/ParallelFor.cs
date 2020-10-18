@@ -8,9 +8,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Arrays
 {
+    [SkewnessColumn, KurtosisColumn]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public unsafe class ParallelFor
     {
         private int* arr1;
@@ -29,7 +32,7 @@ namespace Arrays
             arr3 = (int*)Marshal.AllocHGlobal(CAPACITY * sizeof(int));
         }
 
-        [Benchmark]
+        [Benchmark(Baseline = true)]
         public void ParallelForNaive()
         {
             Parallel.For(0, Size, i => *(arr1 + i) = *(arr2 + i) + *(arr3 + i));
@@ -76,18 +79,22 @@ namespace Arrays
 
 /*
 
-|--------------------- |------ |----------:|----------:|----------:|
-|     ParallelForNaive |   128 |  3.804 us | 0.0162 us | 0.0136 us |
-|     ParallelForBatch |   128 |  3.139 us | 0.0493 us | 0.0462 us |
-| ParallelForBatchSimd |   128 |  3.119 us | 0.0506 us | 0.0473 us |
-|     ParallelForNaive |  1024 |  8.546 us | 0.0489 us | 0.0457 us |
-|     ParallelForBatch |  1024 |  3.855 us | 0.0269 us | 0.0225 us |
-| ParallelForBatchSimd |  1024 |  3.299 us | 0.0434 us | 0.0385 us |
-|     ParallelForNaive |  8192 | 17.545 us | 0.2511 us | 0.2349 us |
-|     ParallelForBatch |  8192 |  6.300 us | 0.0149 us | 0.0140 us |
-| ParallelForBatchSimd |  8192 |  4.608 us | 0.0264 us | 0.0247 us |
-|     ParallelForNaive | 65536 | 75.179 us | 1.1303 us | 1.0573 us |
-|     ParallelForBatch | 65536 | 19.142 us | 0.2403 us | 0.2130 us |
-| ParallelForBatchSimd | 65536 | 10.735 us | 0.0306 us | 0.0286 us |
+|               Method |  Size |      Mean |     Error |    StdDev | Skewness | Kurtosis | Ratio | RatioSD |
+|--------------------- |------ |----------:|----------:|----------:|---------:|---------:|------:|--------:|
+| ParallelForBatchSimd |   128 |  3.030 us | 0.0473 us | 0.0443 us |   0.3389 |    1.817 |  0.79 |    0.01 |
+|     ParallelForBatch |   128 |  3.226 us | 0.0607 us | 0.0623 us |  -0.5232 |    1.542 |  0.84 |    0.02 |
+|     ParallelForNaive |   128 |  3.817 us | 0.0344 us | 0.0322 us |  -0.4436 |    1.810 |  1.00 |    0.00 |
+|                      |       |           |           |           |          |          |       |         |
+| ParallelForBatchSimd |  1024 |  3.286 us | 0.0591 us | 0.0552 us |   0.8498 |    2.142 |  0.38 |    0.01 |
+|     ParallelForBatch |  1024 |  3.968 us | 0.0546 us | 0.0511 us |   0.2136 |    2.525 |  0.46 |    0.01 |
+|     ParallelForNaive |  1024 |  8.548 us | 0.0459 us | 0.0429 us |  -0.5724 |    2.300 |  1.00 |    0.00 |
+|                      |       |           |           |           |          |          |       |         |
+| ParallelForBatchSimd |  8192 |  4.776 us | 0.0653 us | 0.0611 us |   0.0559 |    2.010 |  0.27 |    0.01 |
+|     ParallelForBatch |  8192 |  6.402 us | 0.0230 us | 0.0216 us |   0.1045 |    2.139 |  0.37 |    0.01 |
+|     ParallelForNaive |  8192 | 17.450 us | 0.2988 us | 0.3778 us |   0.1228 |    2.103 |  1.00 |    0.00 |
+|                      |       |           |           |           |          |          |       |         |
+| ParallelForBatchSimd | 65536 | 10.768 us | 0.0642 us | 0.0601 us |  -0.5767 |    2.684 |  0.14 |    0.00 |
+|     ParallelForBatch | 65536 | 20.390 us | 0.4062 us | 0.4171 us |  -0.3309 |    1.512 |  0.26 |    0.01 |
+|     ParallelForNaive | 65536 | 80.463 us | 1.5860 us | 2.7358 us |  -0.0386 |    2.190 |  1.00 |    0.00 |
 
  */
