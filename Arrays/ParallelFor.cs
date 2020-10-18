@@ -73,3 +73,21 @@ namespace Arrays
         }
     }
 }
+
+/*
+
+|--------------------- |------ |----------:|----------:|----------:|
+|     ParallelForNaive |   128 |  3.804 us | 0.0162 us | 0.0136 us |
+|     ParallelForBatch |   128 |  3.139 us | 0.0493 us | 0.0462 us |
+| ParallelForBatchSimd |   128 |  3.119 us | 0.0506 us | 0.0473 us |
+|     ParallelForNaive |  1024 |  8.546 us | 0.0489 us | 0.0457 us |
+|     ParallelForBatch |  1024 |  3.855 us | 0.0269 us | 0.0225 us |
+| ParallelForBatchSimd |  1024 |  3.299 us | 0.0434 us | 0.0385 us |
+|     ParallelForNaive |  8192 | 17.545 us | 0.2511 us | 0.2349 us |
+|     ParallelForBatch |  8192 |  6.300 us | 0.0149 us | 0.0140 us |
+| ParallelForBatchSimd |  8192 |  4.608 us | 0.0264 us | 0.0247 us |
+|     ParallelForNaive | 65536 | 75.179 us | 1.1303 us | 1.0573 us |
+|     ParallelForBatch | 65536 | 19.142 us | 0.2403 us | 0.2130 us |
+| ParallelForBatchSimd | 65536 | 10.735 us | 0.0306 us | 0.0286 us |
+
+ */
