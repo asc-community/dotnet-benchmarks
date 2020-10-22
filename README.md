@@ -1,8 +1,16 @@
+[![Discord](https://img.shields.io/discord/642350046213439489?color=orange&label=Discord)](https://discord.gg/YWJEX7a)
+[![GitHub](https://img.shields.io/github/license/asc-community/dotnet-benchmarks)](./LICENSE)
+![Built by community](https://img.shields.io/badge/Built%20by-Community-blue)
+
+
 ## Benchmark Almanac for .NET
 
 In this repo we are collecting benchmarks for different situations, as well as
-advices for developers about improving their software's performance. We encourage 
-you to run the benchmarks for yourself and draw your own conclusions.
+advices for developers about improving their software's performance.
+
+## 
+
+But we have started articles that 
 
 ### Contribution
 
