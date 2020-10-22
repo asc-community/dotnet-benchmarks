@@ -2,27 +2,47 @@
 [![GitHub](https://img.shields.io/github/license/asc-community/dotnet-benchmarks)](./LICENSE)
 ![Built by community](https://img.shields.io/badge/Built%20by-Community-blue)
 
-
 ## Benchmark Almanac for .NET
 
 In this repo we are collecting benchmarks for different situations, as well as
 advices for developers about improving their software's performance.
 
-## 
+### Benchmarks
 
-But we have started articles that 
+So ![here](./Benchmarks) you can see all benchmarks collected for the Almanac. The idea
+is to consider cases where the developer does not expected a performance issue. The current
+public API and the approach programmers follow doesn't let us write a very fast code,
+so we have to know all those issues.
+
+Most programmers who care about performance would either look at the JIT's generated
+assembler to see where the issues can come from, or write their own benchmarks to
+test different cases.
+
+Here we collect all those benchmarks in one repository, which is and will be open for everyone.
+Not only that, we highly encourage the community, you including, to try to add your
+benchmark too.
+
+To avoid the mess created by so many benchmarks, we started writing pieces of articles
+and advices for developers who don't want to spend a day on investigating the benchmarks.
+
+### Articles
+
+Benchmarks tell us truth, but one could need a quick tip instead. That's why there are
+some articles ![here](./Articles) that may help you to get through these benchmarks.
+
+As anything else on Earth, they may contain mistakes, that is why it might be
+safer to rely on benchmarks rather than articles that are based on them. However,
+why not to try the tip form the article and see for yourself whether it works or not?
+
+As well as benchmarks, it is highly encouraged to help us with those articles. All the content
+from the repo is open and exposed to any healthy contributions.
 
 ### Contribution
 
-Feel free to propose your own benchmark with interesting results.
+If you want to add a new benchmark, either create a new folder for it, or add a file to 
+an existing one, if your benchmark fits an existing category.
 
-### Benchmarks
+If you want to add an article, just go ahead, so far we don't have any recommendations on it,
+we will see how it goes :).
 
-- [Arrays](https://github.com/dotneters/dotnet-benchmarks/tree/master/Arrays)
-- [Branching Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/BranchingTechniques)
-- [Exception Handling Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/ExceptionHandlingTechniques)
-- [Indexed Collection Abstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/IndexedCollectionAbstractions)
-- [Method Abstractions](https://github.com/dotneters/dotnet-benchmarks/tree/master/MethodAbstractions)
-- [Multiple Returns Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/MultipleReturnsTechniques)
-- [Reflection Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/ReflectionTechniques)
-- [String Formatting Techniques](https://github.com/dotneters/dotnet-benchmarks/tree/master/StringFormattingTechniques)
+Any other contribution is welcomed as well!
