@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringFormattingTechniques"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BranchingTechniques", "BranchingTechniques\BranchingTechniques.csproj", "{33D9064C-160D-448C-9827-BAA077CA3644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingTechniques", "ExceptionHandlingTechniques\ExceptionHandlingTechniques.csproj", "{0183986E-78D4-4C4F-AF2C-69E961A986EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandlingTechniques", "ExceptionHandlingTechniques\ExceptionHandlingTechniques.csproj", "{0183986E-78D4-4C4F-AF2C-69E961A986EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionTechniques", "ReflectionTechniques\ReflectionTechniques.csproj", "{4320629B-EB16-405E-AF83-49DA499043E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionTechniques", "ReflectionTechniques\ReflectionTechniques.csproj", "{4320629B-EB16-405E-AF83-49DA499043E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxing", "Boxing\Boxing\Boxing.csproj", "{E6C9254E-3E6A-4073-9486-C55286521575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{4320629B-EB16-405E-AF83-49DA499043E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4320629B-EB16-405E-AF83-49DA499043E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4320629B-EB16-405E-AF83-49DA499043E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6C9254E-3E6A-4073-9486-C55286521575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6C9254E-3E6A-4073-9486-C55286521575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6C9254E-3E6A-4073-9486-C55286521575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6C9254E-3E6A-4073-9486-C55286521575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
