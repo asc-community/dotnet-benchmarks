@@ -9,7 +9,9 @@ advices for developers about improving their software's performance.
 
 ### Benchmarks
 
-So ![here](./Benchmarks) you can see all benchmarks collected for the Almanac. The idea
+[![Benchmarks](https://img.shields.io/badge/Go%20to-Benchmarks-blueviolet)](./Benchmarks)
+
+Here you can see all benchmarks collected for the Almanac. The idea
 is to consider cases where the developer does not expected a performance issue. The current
 public API and the approach programmers follow doesn't let us write a very fast code,
 so we have to know all those issues.
@@ -26,6 +28,8 @@ To avoid the mess created by so many benchmarks, we started writing pieces of ar
 and advices for developers who don't want to spend a day on investigating the benchmarks.
 
 ### Articles
+
+[![Articles](https://img.shields.io/badge/Go%20to-Articles-blueviolet)](./Articles)
 
 Benchmarks tell us truth, but one could need a quick tip instead. That's why there are
 some articles ![here](./Articles) that may help you to get through these benchmarks.
