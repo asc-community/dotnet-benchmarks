@@ -32,7 +32,7 @@ and advices for developers who don't want to spend a day on investigating the be
 [![Articles](https://img.shields.io/badge/Go%20to-Articles-blueviolet)](./Articles)
 
 Benchmarks tell us truth, but one could need a quick tip instead. That's why there are
-some articles ![here](./Articles) that may help you to get through these benchmarks.
+some articles that may help you to get through these benchmarks.
 
 As anything else on Earth, they may contain mistakes, that is why it might be
 safer to rely on benchmarks rather than articles that are based on them. However,
