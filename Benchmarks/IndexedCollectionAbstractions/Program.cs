@@ -6,7 +6,8 @@ namespace IndexedCollectionAbstractions
 	{
 		public static void Main()
 		{
-			BenchmarkRunner.Run<IndexedCollectionBenchmarks>();
+			//BenchmarkRunner.Run<IndexedCollectionBenchmarks>();
+			BenchmarkRunner.Run<ParamsIndexerVsOverloads>();
 		}
 	}
 }

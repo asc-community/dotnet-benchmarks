@@ -5,7 +5,8 @@
 ## Benchmark Almanac for .NET
 
 In this repo we are collecting benchmarks for different situations, as well as
-advices for developers about improving their software's performance.
+some thoughts and articles for developers about improving their software's performance. 
+We hope that this project may become a useful reference for people.
 
 ### Benchmarks
 
