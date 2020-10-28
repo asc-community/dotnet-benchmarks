@@ -5,6 +5,7 @@
 //------------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
+using System.Runtime.CompilerServices;
 using System;
 
 namespace TypeEqualityChecking
@@ -35,6 +36,9 @@ namespace TypeEqualityChecking
 
 		static bool TypeOfEqualsGeneric<A, B>() => typeof(A) == typeof(B);
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
+
 		[Benchmark]
 		public void TypeOfEqualsGeneric()
 		{
@@ -53,6 +57,26 @@ namespace TypeEqualityChecking
 			temp = TypeOfEqualsGeneric<decimal, int>();
 			temp = TypeOfEqualsGeneric<byte, int>();
 			temp = TypeOfEqualsGeneric<short, int>();
+		}
+
+		[Benchmark]
+		public void TypeOfEqualsGenericInlined()
+		{
+			// true checks
+			temp = TypeOfEqualsGenericInlined<string, string>();
+			temp = TypeOfEqualsGenericInlined<int, int>();
+			temp = TypeOfEqualsGenericInlined<double, double>();
+			temp = TypeOfEqualsGenericInlined<decimal, decimal>();
+			temp = TypeOfEqualsGenericInlined<byte, byte>();
+			temp = TypeOfEqualsGenericInlined<short, short>();
+
+			// false checks
+			temp = TypeOfEqualsGenericInlined<string, int>();
+			temp = TypeOfEqualsGenericInlined<int, string>();
+			temp = TypeOfEqualsGenericInlined<double, int>();
+			temp = TypeOfEqualsGenericInlined<decimal, int>();
+			temp = TypeOfEqualsGenericInlined<byte, int>();
+			temp = TypeOfEqualsGenericInlined<short, int>();
 		}
 
 		struct Operator_is_struct<A, B> { }

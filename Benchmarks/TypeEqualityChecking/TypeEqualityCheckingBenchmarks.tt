@@ -34,6 +34,7 @@
 #>
 
 using BenchmarkDotNet.Attributes;
+using System.Runtime.CompilerServices;
 using System;
 
 namespace TypeEqualityChecking
@@ -58,6 +59,9 @@ namespace TypeEqualityChecking
 
 		static bool TypeOfEqualsGeneric<A, B>() => typeof(A) == typeof(B);
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
+
 		[Benchmark]
 		public void TypeOfEqualsGeneric()
 		{
@@ -69,6 +73,20 @@ namespace TypeEqualityChecking
 			// false checks
 <# foreach (var (A, B) in falseChecks) { #>
 			temp = TypeOfEqualsGeneric<<#= A #>, <#= B #>>();
+<# } #>
+		}
+
+		[Benchmark]
+		public void TypeOfEqualsGenericInlined()
+		{
+			// true checks
+<# foreach (var (A, B) in trueChecks) { #>
+			temp = TypeOfEqualsGenericInlined<<#= A #>, <#= B #>>();
+<# } #>
+
+			// false checks
+<# foreach (var (A, B) in falseChecks) { #>
+			temp = TypeOfEqualsGenericInlined<<#= A #>, <#= B #>>();
 <# } #>
 		}
 
