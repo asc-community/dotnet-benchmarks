@@ -107,6 +107,23 @@ namespace TypeEqualityChecking
 <# } #>
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool Operator_is_inlined<A, B>() => default(Operator_is_struct<A, B>) is Operator_is_struct<A, A>;
+
+		[Benchmark]
+		public void StructWrappedIsInlined()
+		{
+			// true checks
+<# foreach (var (A, B) in trueChecks) { #>
+			temp = Operator_is_inlined<<#= A #>, <#= B #>>();
+<# } #>
+
+			// false checks
+<# foreach (var (A, B) in falseChecks) { #>
+			temp = Operator_is_inlined<<#= A #>, <#= B #>>();
+<# } #>
+		}
+
 		public static class Cache<A, B>
 		{
 			public static bool Equal = typeof(A) == typeof(B);
