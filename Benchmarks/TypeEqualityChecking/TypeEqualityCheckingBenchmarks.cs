@@ -6,7 +6,6 @@
 
 using BenchmarkDotNet.Attributes;
 using System.Runtime.CompilerServices;
-using System;
 
 namespace TypeEqualityChecking
 {
@@ -36,9 +35,6 @@ namespace TypeEqualityChecking
 
 		static bool TypeOfEqualsGeneric<A, B>() => typeof(A) == typeof(B);
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
-
 		[Benchmark]
 		public void TypeOfEqualsGeneric()
 		{
@@ -58,6 +54,9 @@ namespace TypeEqualityChecking
 			temp = TypeOfEqualsGeneric<byte, int>();
 			temp = TypeOfEqualsGeneric<short, int>();
 		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
 
 		[Benchmark]
 		public void TypeOfEqualsGenericInlined()
@@ -79,8 +78,7 @@ namespace TypeEqualityChecking
 			temp = TypeOfEqualsGenericInlined<short, int>();
 		}
 
-		struct Operator_is_struct<A, B> { }
-		static bool Operator_is<A, B>() => default(Operator_is_struct<A, B>) is Operator_is_struct<A, A>;
+		static bool Operator_is<A, B>() => default((A, B)) is (A, A);
 
 		[Benchmark]
 		public void StructWrappedIs()
@@ -103,7 +101,7 @@ namespace TypeEqualityChecking
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static bool Operator_is_inlined<A, B>() => default(Operator_is_struct<A, B>) is Operator_is_struct<A, A>;
+		static bool Operator_is_inlined<A, B>() => default((A, B)) is (A, A);
 
 		[Benchmark]
 		public void StructWrappedIsInlined()
@@ -123,6 +121,51 @@ namespace TypeEqualityChecking
 			temp = Operator_is_inlined<decimal, int>();
 			temp = Operator_is_inlined<byte, int>();
 			temp = Operator_is_inlined<short, int>();
+		}
+
+		static bool GetTypeEqualsGeneric<A, B>() => default((A, B)).GetType() == default((A, A)).GetType();
+
+		[Benchmark]
+		public void GetTypeEqualsGeneric()
+		{
+			// true checks
+			temp = GetTypeEqualsGeneric<string, string>();
+			temp = GetTypeEqualsGeneric<int, int>();
+			temp = GetTypeEqualsGeneric<double, double>();
+			temp = GetTypeEqualsGeneric<decimal, decimal>();
+			temp = GetTypeEqualsGeneric<byte, byte>();
+			temp = GetTypeEqualsGeneric<short, short>();
+
+			// false checks
+			temp = GetTypeEqualsGeneric<string, int>();
+			temp = GetTypeEqualsGeneric<int, string>();
+			temp = GetTypeEqualsGeneric<double, int>();
+			temp = GetTypeEqualsGeneric<decimal, int>();
+			temp = GetTypeEqualsGeneric<byte, int>();
+			temp = GetTypeEqualsGeneric<short, int>();
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool GetTypeEqualsGenericInlined<A, B>() => default((A, B)).GetType() == default((A, A)).GetType();
+
+		[Benchmark]
+		public void GetTypeEqualsGenericInlined()
+		{
+			// true checks
+			temp = GetTypeEqualsGenericInlined<string, string>();
+			temp = GetTypeEqualsGenericInlined<int, int>();
+			temp = GetTypeEqualsGenericInlined<double, double>();
+			temp = GetTypeEqualsGenericInlined<decimal, decimal>();
+			temp = GetTypeEqualsGenericInlined<byte, byte>();
+			temp = GetTypeEqualsGenericInlined<short, short>();
+
+			// false checks
+			temp = GetTypeEqualsGenericInlined<string, int>();
+			temp = GetTypeEqualsGenericInlined<int, string>();
+			temp = GetTypeEqualsGenericInlined<double, int>();
+			temp = GetTypeEqualsGenericInlined<decimal, int>();
+			temp = GetTypeEqualsGenericInlined<byte, int>();
+			temp = GetTypeEqualsGenericInlined<short, int>();
 		}
 
 		public static class Cache<A, B>

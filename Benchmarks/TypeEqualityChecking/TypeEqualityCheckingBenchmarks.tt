@@ -35,7 +35,6 @@
 
 using BenchmarkDotNet.Attributes;
 using System.Runtime.CompilerServices;
-using System;
 
 namespace TypeEqualityChecking
 {
@@ -59,9 +58,6 @@ namespace TypeEqualityChecking
 
 		static bool TypeOfEqualsGeneric<A, B>() => typeof(A) == typeof(B);
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
-
 		[Benchmark]
 		public void TypeOfEqualsGeneric()
 		{
@@ -75,6 +71,9 @@ namespace TypeEqualityChecking
 			temp = TypeOfEqualsGeneric<<#= A #>, <#= B #>>();
 <# } #>
 		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool TypeOfEqualsGenericInlined<A, B>() => typeof(A) == typeof(B);
 
 		[Benchmark]
 		public void TypeOfEqualsGenericInlined()
@@ -90,8 +89,7 @@ namespace TypeEqualityChecking
 <# } #>
 		}
 
-		struct Operator_is_struct<A, B> { }
-		static bool Operator_is<A, B>() => default(Operator_is_struct<A, B>) is Operator_is_struct<A, A>;
+		static bool Operator_is<A, B>() => default((A, B)) is (A, A);
 
 		[Benchmark]
 		public void StructWrappedIs()
@@ -108,7 +106,7 @@ namespace TypeEqualityChecking
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static bool Operator_is_inlined<A, B>() => default(Operator_is_struct<A, B>) is Operator_is_struct<A, A>;
+		static bool Operator_is_inlined<A, B>() => default((A, B)) is (A, A);
 
 		[Benchmark]
 		public void StructWrappedIsInlined()
@@ -121,6 +119,39 @@ namespace TypeEqualityChecking
 			// false checks
 <# foreach (var (A, B) in falseChecks) { #>
 			temp = Operator_is_inlined<<#= A #>, <#= B #>>();
+<# } #>
+		}
+
+		static bool GetTypeEqualsGeneric<A, B>() => default((A, B)).GetType() == default((A, A)).GetType();
+
+		[Benchmark]
+		public void GetTypeEqualsGeneric()
+		{
+			// true checks
+<# foreach (var (A, B) in trueChecks) { #>
+			temp = GetTypeEqualsGeneric<<#= A #>, <#= B #>>();
+<# } #>
+
+			// false checks
+<# foreach (var (A, B) in falseChecks) { #>
+			temp = GetTypeEqualsGeneric<<#= A #>, <#= B #>>();
+<# } #>
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static bool GetTypeEqualsGenericInlined<A, B>() => default((A, B)).GetType() == default((A, A)).GetType();
+
+		[Benchmark]
+		public void GetTypeEqualsGenericInlined()
+		{
+			// true checks
+<# foreach (var (A, B) in trueChecks) { #>
+			temp = GetTypeEqualsGenericInlined<<#= A #>, <#= B #>>();
+<# } #>
+
+			// false checks
+<# foreach (var (A, B) in falseChecks) { #>
+			temp = GetTypeEqualsGenericInlined<<#= A #>, <#= B #>>();
 <# } #>
 		}
 
