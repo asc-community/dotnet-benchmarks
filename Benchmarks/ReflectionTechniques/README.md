@@ -2,8 +2,6 @@
 
 This benchmark compares some patterns for using reflection.
 
-_Note: large conditional expressions cause a `StackOverflowException` in Roslyn and cannot be built._
-
 ``` ini
 
 BenchmarkDotNet=v0.12.1, OS=Windows 10.0.18363.1016 (1909/November2018Update/19H2)
