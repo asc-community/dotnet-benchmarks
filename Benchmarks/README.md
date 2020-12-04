@@ -14,3 +14,4 @@ different conclusions, so it's all up to the reader how to perceive them.
 - [String Formatting Techniques](./StringFormattingTechniques)
 - [Boxing](./Boxing)
 - [Type Equality Checking](./TypeEqualityChecking)
+- [Dynamic String Construction](./DynamicStringConstruction)
