@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionTechniques", "Ref
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boxing", "Boxing\Boxing\Boxing.csproj", "{E6C9254E-3E6A-4073-9486-C55286521575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeEqualityChecking", "TypeEqualityChecking\TypeEqualityChecking.csproj", "{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeEqualityChecking", "TypeEqualityChecking\TypeEqualityChecking.csproj", "{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IterationRefParametersVsReturns", "IterationRefParametersVsReturns\IterationRefParametersVsReturns.csproj", "{9A5233E6-59F3-46E5-8608-F14E67F218F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
