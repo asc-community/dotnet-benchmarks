@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace IterationRefParametersVsReturns
 {
-	public class IterationRefParametersVsReturnsBenchmarks
+	public unsafe class IterationRefParametersVsReturnsBenchmarks
 	{
-		[Params(10, 100, 1000, 10000)]
+		[Params(10, 100, 1000, 10000, 100000)]
 		public int N;
 
 		int[] array;
@@ -92,6 +92,28 @@ namespace IterationRefParametersVsReturns
 			for (int i = 0; i < N; i++)
 			{
 				updater.Invoke(ref array[i]);
+			}
+		}
+		
+		[Benchmark]
+		public void FunctionPointer() => UpdateWithPointer(array, &IncrementInt32);
+		static int IncrementInt32(int x) => x + 1;
+		public void UpdateWithPointer<T>(T[] array, delegate*<T, T> updater)
+		{
+			for (int i = 0; i < N; i++)
+			{
+				array[i] = updater(array[i]);
+			}
+		}
+
+		[Benchmark]
+		public void FunctionPointerRefParam() => UpdateWithPointerRef(array, &IncrementInt32);
+		static void IncrementInt32(ref int x) => x += 1;
+		public void UpdateWithPointerRef<T>(T[] array, delegate*<ref T, void> updater)
+		{
+			for (int i = 0; i < N; i++)
+			{
+				updater(ref array[i]);
 			}
 		}
 	}
