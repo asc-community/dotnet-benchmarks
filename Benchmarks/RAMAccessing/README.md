@@ -8,6 +8,25 @@ Note, that the mulltithreading itself is not the key here but the cacheline whic
 inefficiently when we're reading a single int and then abandon the chunk of memory versus
 when we use 100% of what it prepared for us.
 
+Illustration of what I mean. Assume there's some continuous data, here are two out of many
+ways to read/write it (number = job/thread/etc):
+```
+11111111
+        22222222
+                33333333
+                        44444444
+```
+And
+```
+1   1   1   1   1   1   1   1
+ 2   2   2   2   2   2   2   2
+  3   3   3   3   3   3   3   3
+   4   4   4   4   4   4   4   4
+```
+The first one is marked as `'Threads read far from each other'` and the second one is marked
+as `'Threads read one by one confusing the cacheline'`.
+
+
 
 ```ini
 BenchmarkDotNet=v0.13.0, OS=Windows 10.0.19042.1083 (20H2/October2020Update)
