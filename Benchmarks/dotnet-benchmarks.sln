@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30406.217
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Arrays\Arrays.csproj", "{66DA2743-3D2F-469E-B71D-282C52D2F970}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionTechniques", "ReflectionTechniques\ReflectionTechniques.csproj", "{4320629B-EB16-405E-AF83-49DA499043E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boxing", "Boxing\Boxing\Boxing.csproj", "{E6C9254E-3E6A-4073-9486-C55286521575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMAccessing", "RAMAccessing\RAMAccessing.csproj", "{BA1A2CEB-EA78-4619-A974-9DE800FE8877}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeEqualityChecking", "TypeEqualityChecking\TypeEqualityChecking.csproj", "{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}"
 EndProject
@@ -67,6 +69,10 @@ Global
 		{E6C9254E-3E6A-4073-9486-C55286521575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6C9254E-3E6A-4073-9486-C55286521575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6C9254E-3E6A-4073-9486-C55286521575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1A2CEB-EA78-4619-A974-9DE800FE8877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1A2CEB-EA78-4619-A974-9DE800FE8877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1A2CEB-EA78-4619-A974-9DE800FE8877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1A2CEB-EA78-4619-A974-9DE800FE8877}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}.Release|Any CPU.ActiveCfg = Release|Any CPU
