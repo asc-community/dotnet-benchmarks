@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionTechniques", "Ref
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boxing", "Boxing\Boxing\Boxing.csproj", "{E6C9254E-3E6A-4073-9486-C55286521575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multithreading", "Multithreading\Multithreading.csproj", "{BA1A2CEB-EA78-4619-A974-9DE800FE8877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMAccessing", "RAMAccessing\RAMAccessing.csproj", "{BA1A2CEB-EA78-4619-A974-9DE800FE8877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

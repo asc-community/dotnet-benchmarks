@@ -4,20 +4,31 @@ public class CacheLocalityBenchmark
 {
     private int[] array = new int[64 * 64 * 64 * 64 * 4];
     const int ThreadCount = 8;
+    
+    [Params(true, false)]
+    public bool IsMultithreadingOn { get; set; }
 
     public void RunThreads(Action<int> f)
     {
-        var threads = new Thread[ThreadCount];
-
-        for (int i = 0; i < ThreadCount; i++)
+        if (IsMultithreadingOn)
         {
-            var l = i;
-            threads[i] = new Thread(new ThreadStart(() => f(l)));
-            threads[i].Start();
-        }
+            var threads = new Thread[ThreadCount];
 
-        for (int i = 0; i < ThreadCount; i++)
-            threads[i].Join();
+            for (int i = 0; i < ThreadCount; i++)
+            {
+                var l = i;
+                threads[i] = new Thread(new ThreadStart(() => f(l)));
+                threads[i].Start();
+            }
+
+            for (int i = 0; i < ThreadCount; i++)
+                threads[i].Join();
+        }
+        else
+        {
+            for (int i = 0; i < ThreadCount; i++)
+                f(i);
+        }
     }
 
     [Benchmark(Description = "Threads read one by one confusing the cacheline")]
