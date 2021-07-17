@@ -6,7 +6,7 @@ namespace Arrays
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<ParallelFor>();
+            BenchmarkRunner.Run<IntArrayReversing>();
         }
     }
 }
