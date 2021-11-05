@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30406.217
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Arrays\Arrays.csproj", "{66DA2743-3D2F-469E-B71D-282C52D2F970}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeEqualityChecking", "TypeEqualityChecking\TypeEqualityChecking.csproj", "{C37EAD36-7FBA-4F56-ACBD-D572DAF4B053}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IterationRefParametersVsReturns", "IterationRefParametersVsReturns\IterationRefParametersVsReturns.csproj", "{9A5233E6-59F3-46E5-8608-F14E67F218F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryAlignment", "MemoryAlignment\MemoryAlignment.csproj", "{D4AEF225-ECAC-4DE5-81CB-018969721A80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A5233E6-59F3-46E5-8608-F14E67F218F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4AEF225-ECAC-4DE5-81CB-018969721A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4AEF225-ECAC-4DE5-81CB-018969721A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4AEF225-ECAC-4DE5-81CB-018969721A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4AEF225-ECAC-4DE5-81CB-018969721A80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
